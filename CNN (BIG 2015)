@@ -6,11 +6,11 @@ import os
 #importing libraries
 os.environ['KMP_DUPLICATE_LIB_OK']='True'
 #Sets an environment variable to prevent duplication issues
-train_dir = 'D:\\malware\\malevis_train_val_300x300\\malevis_train_val_300x300\\train'
-val_dir = 'D:\\malware\\malevis_train_val_300x300\\malevis_train_val_300x300\\val'
-# paths of train and validation directory of the Malevis dataset
+train_dir = 'D:\\malware\\data_224_g\\data_224_g\\train'
+val_dir = 'D:\\malware\\data_224_g\\data_224_g\\val'
+# paths of train and validation directory of the Microsoft Malware Classification Challenge (BIG 2015)
 
-img_height, img_width = 300, 300  # image size
+img_height, img_width = 224, 224  # image size
 batch_size = 32
 train_datagen = ImageDataGenerator(
     rescale=1./255,
@@ -51,7 +51,7 @@ model = Sequential([
     Flatten(),
     Dense(512, activation='relu'),
     Dropout(0.5),
-    Dense(26, activation='softmax')  # Output layer for 26 classes
+    Dense(9, activation='softmax')  # Output layer for 9 classes
 ])
 #CNN model
 #model.compile(optimizer='adam', loss='categorical_crossentropy', metrics=['accuracy'])
